@@ -1073,3 +1073,52 @@ if (config.build.bundleAnalyzerReport) {
 module.exports = webpackConfig
 ```
 
+## 补充-关于移动端
+
+```
+移动端布局需要使用到rem+百分比，因此对于px自动转换为rem还是很有必要的
+1.安装以下两个插件
+npm install lib-flexible px2rem-loader --save
+2.在main.js中引入lib-flexible
+import 'lib-flexible/flexible'
+3.在build下的utils.js中找到exports.cssLoaders方法，在该方法中添加以下代码。
+  const px2remLoader = {
+    loader: 'px2rem-loader',
+    options: {
+      baseDpr: 2, //dpr设置为2
+      remUnit: 75, //1rem=75px
+      remPrecision: 4 //转为rem后保留4位小数
+    }
+  }
+  4.在build下的utils.js中找到exports.cssLoaders方法，在该方法中找到generateLoaders方法后添加该插件。
+  const loaders = options.usePostCSS ? [cssLoader, postcssLoader, px2remLoader] : [cssLoader, px2remLoader]
+  5.直接写px，编译后会直接转化成rem
+    在px后面添加/*no*/，不会转化px，会原样输出，一般border需用这个
+    在px后面添加/*px*/,会根据dpr的不同，生成三套代码，一般字体需用这个
+    示例代码：
+	编译前（自己写的代码）
+    .box {
+        width: 150px;
+        height: 64px; /*px*/
+        font-size: 28px; /*px*/
+        border: 1px solid #ddd; /*no*/
+    }
+    编译后（打包后的代码）
+    .box {
+        width: 2rem;
+        border: 1px solid #ddd;
+    }
+    [data-dpr="1"] .box {
+        height: 32px;
+        font-size: 14px;
+    }
+    [data-dpr="2"] .box {
+        height: 64px;
+        font-size: 28px;
+    }
+    [data-dpr="3"] .box {
+        height: 96px;
+        font-size: 42px;
+    }
+```
+
