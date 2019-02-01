@@ -1,8 +1,8 @@
 import * as types from './mutation-types'
 
 const mutations = {
-    [types.CUR_LOGO] (state, val) {
-        state.curLogo = val;
+    [types.TEST] (state, val) {
+        state.flag = val;
     }
 }
 export default mutations

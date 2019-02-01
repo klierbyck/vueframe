@@ -5,7 +5,7 @@ import state from './state'
 import mutations from './mutations'
 import * as actions from './actions'
 import * as getters from './getters'
-import space from './modules/space'
+import test from './modules/test'
 
 Vue.use(Vuex)
 
@@ -17,8 +17,8 @@ export default new Vuex.Store({
     actions,
     getters,
     modules: {
-        space
+        test
     },
-    strict: debug,
+    // strict: debug,
     plugins: debug ? [createLogger()] : []
 })

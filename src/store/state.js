@@ -1,5 +1,5 @@
 const state = {
-    curLogo: ''
+    flag: true
 }
 
 export default state

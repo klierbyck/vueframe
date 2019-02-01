@@ -1,3 +1,3 @@
-export const getLogo = state => {
-    return state.curLogo;
+export const getFlag= state => {
+    return state.flag;
 }

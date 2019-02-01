@@ -1,42 +1,35 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import layout from '@/views/layout/Layout.vue';
-import auth from '@/libs/auth.js'
+// import Func from '@/views/func/Func.vue';
 
 Vue.use(Router);
 
-export const appRouter = [{
-    path: '/login',
-    component: resolve => {
-        require(['@/views/login/Login.vue'], resolve);
-    }
-},
-{
-    path: '/cp',
-    component: layout,
-    children: [{
-        path: '',
+export const appRouter = [
+    {
+        path: '*', //*号表示匹配任意内容
+        title: '404',
         component: resolve => {
-            require(['@/views/example/ExampleList.vue'], resolve);
+            require(['@/views/error/error.vue'], resolve);
         }
     },
     {
-        path: ':id',
+        path: '/',
+        name: 'Test',
         component: resolve => {
-            require(['@/views/example/ExampleDetail.vue'], resolve);
+            require(['@/views/test/test.vue'], resolve);
         }
-    }]
-},
-{
-    path: '/error',
-    component: layout,
-    children: [{
-        path: '',
-        component: resolve => {
-            require(['@/views/error/Error.vue'], resolve);
-        }
-    }]
-}
+    },
+    // {
+    //     path: '/qa',
+    //     component: Func,
+    //     children: [{
+    //         path: '',
+    //         name: 'qa',
+    //         component: resolve => {
+    //             require(['@/views/qa/Qa.vue'], resolve);
+    //         }
+    //     }]
+    // }
 ]
 
 let route = new Router({
@@ -44,12 +37,12 @@ let route = new Router({
     routes: appRouter
 });
 
-route.beforeEach((to, from, next) => {
+/* route.beforeEach((to, from, next) => {
     if (to.path !== '/login' && !auth.isLogin()) {
         next('/login');
     } else {
         next();
     }
-});
+}); */
 
 export default route;

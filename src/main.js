@@ -3,19 +3,20 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import api from '@/api/index.js';
-import store from './store'
+import store from './store/index.js'
+import http from '@/http/index.js'
+import echarts from 'echarts'
+
+window.echarts = echarts;
+Vue.prototype.$http = http;
 
 Vue.config.productionTip = false;
-Vue.prototype.$api = api;
 
 /* eslint-disable no-new */
 new Vue({
-    el: '#app',
-    router,
-    store,
-    template: '<App/>',
-    components: {
-        App
-    }
+  el: '#app',
+  router,
+  store,
+  components: { App },
+  template: '<App/>'
 })
