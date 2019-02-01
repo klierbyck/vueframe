@@ -19,6 +19,10 @@ npm install
 
 npm run dev
 
+# build for test with minification
+
+npm run test-build
+
 # build for production with minification
 
 npm run build
@@ -51,6 +55,8 @@ npm run build --report
 
 │      check-versions.js
 
+│      test-build.js
+
 │      utils.js
 
 │      vue-loader.conf.js
@@ -59,7 +65,9 @@ npm run build --report
 
 │      webpack.dev.conf.js
 
-│      webpack.prod.conf.js    
+│      webpack.prod.conf.js
+
+│      webpack.test.conf.js
 
 ├─config  //基础环境配置
 
@@ -67,7 +75,9 @@ npm run build --report
 
 │      index.js
 
-│      prod.env.js      
+│      prod.env.js
+
+│      test.env.js
 
 ├─src  //项目源码
 
@@ -75,7 +85,7 @@ npm run build --report
 
 │  │  main.js
 
-│  ├─api  //请求方式封装
+│  ├─api  //全局接口统一配置文件
 
 │  │      index.js    
 
@@ -87,9 +97,15 @@ npm run build --report
 
 │         .gitkeep
 
+│  |─directives  //自定义指令
+
+│  |─http  //基于axios请求方式封装
+
 │  ├─libs  //自己封装的公共函数
 
-│  │      auth.js   
+│  │      date.js //时间格式化
+
+│  │      util.js  //工具函数
 
 │  ├─router  //路由配置
 
@@ -111,45 +127,25 @@ npm run build --report
 
 │  │  └─modules
 
-│  │          space.js      
+│  │          test.js      
 
 │  └─views  //各页面组件分类
 
 │      ├─error
 
-│      │  │  Error.vue  
+│      │  │  error.vue  
 
-│      │  └─styles
+│      │  │  error.less
 
-│      │          error.less       
+│      │  │  index.js       
 
-│      ├─example
+│      ├─test
 
-│      │  │  ExampleDetail.vue
+│      │  │  test.vue  
 
-│      │  │  ExampleList.vue
+│      │  │  test.less
 
-│      │  └─styles
-
-│      │          example-detail.less
-
-│      │          example-list.less        
-
-│      ├─layout
-
-│      │  │  Layout.vue
-
-│      │  └─styles
-
-│      │          layout.less        
-
-│      └─login
-
-│          │  Login.vue
-
-│          └─styles
-
-│                  login.less               
+│      │  │  test.js  
 
 └─static  //存放第三方静态资源
 
@@ -188,8 +184,11 @@ npm run build --report
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",  
 
     "start": "npm run dev",
+    //打包测试代码
 
-    //打包代码
+    "test-build": "node build/test-build.js" 
+
+    //打包正式代码
 
     "build": "node build/build.js" 
 
@@ -200,6 +199,8 @@ npm run build --report
   "dependencies": {
 
     "axios": "^0.17.0",
+
+    "echarts": "^4.2.0-rc.2",
 
     "vue": "^2.5.2",
 
@@ -400,8 +401,17 @@ const prodEnv = require('./prod.env')
 //如果生产环境对象中的键和开发环境对象中的键相同则采用开发环境中的键值，如果开发环境中没有对应的键值则集成生产环境中的键值
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  API_ROOT: '"测试api"'
+  API_ROOT: '"开发api"'
 })
+```
+
+## config/test.env.js
+
+```
+module.exports = {
+  NODE_ENV: '"production"',
+  API_ROOT: '"测试api"'
+}
 ```
 
 ## config/prod.env.js
