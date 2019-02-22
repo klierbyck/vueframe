@@ -4,21 +4,20 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 
-export const appRouter = [
-    {
+export const appRouter = [{
         path: '*', //*号表示匹配任意内容
         title: '404',
         component: resolve => {
             require(['@/views/error/error.vue'], resolve);
         }
     },
-    {
-        path: '/',
-        name: 'Test',
-        component: resolve => {
-            require(['@/views/test/test.vue'], resolve);
-        }
-    },
+    // {
+    //     path: '/',
+    //     name: 'Test',
+    //     component: resolve => {
+    //         require(['@/views/test/test.vue'], resolve);
+    //     }
+    // },
     // {
     //     path: '/qa',
     //     component: Func,
