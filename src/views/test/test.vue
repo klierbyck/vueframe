@@ -6,8 +6,8 @@
     </div>
 </template>
 <script>
-    import util from '@/utils/util.js'
-    import dateFtt from '@/utils/date.js'
+    import util from '@/libs/util.js'
+    import dateFtt from '@/libs/date.js'
     export default {
         data () {
             return {

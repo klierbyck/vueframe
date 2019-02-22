@@ -11,13 +11,13 @@ export const appRouter = [{
             require(['@/views/error/error.vue'], resolve);
         }
     },
-    // {
-    //     path: '/',
-    //     name: 'Test',
-    //     component: resolve => {
-    //         require(['@/views/test/test.vue'], resolve);
-    //     }
-    // },
+    {
+        path: '/',
+        name: 'Test',
+        component: resolve => {
+            require(['@/views/test/test.vue'], resolve);
+        }
+    },
     // {
     //     path: '/qa',
     //     component: Func,
