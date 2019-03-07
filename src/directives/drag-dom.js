@@ -1,7 +1,7 @@
 import Vue from 'vue';
 // 元素拖拽
 Vue.directive('domDrag', {
-    bind (el, binding, vnode, oldVnode) {
+    bind(el, binding, vnode, oldVnode) {
         const dialogHeaderEl = el.querySelector('.el-dialog__header');
         const dragDom = el.querySelector('.el-dialog');
         dialogHeaderEl.style.cursor = 'move';
@@ -26,7 +26,7 @@ Vue.directive('domDrag', {
                 styT = +sty.top.replace(/\px/g, '');
             };
 
-            document.onmousemove = function (e) {
+            document.onmousemove = function(e) {
                 // 通过事件委托，计算移动的距离 
                 const l = e.clientX - disX;
                 const t = e.clientY - disY;
@@ -39,7 +39,7 @@ Vue.directive('domDrag', {
                 //binding.value({x:e.pageX,y:e.pageY})
             };
 
-            document.onmouseup = function (e) {
+            document.onmouseup = function(e) {
                 document.onmousemove = null;
                 document.onmouseup = null;
             };

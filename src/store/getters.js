@@ -1,3 +1,3 @@
-export const getFlag= state => {
-    return state.flag;
+export const getFlag = state => {
+    return state.flag
 }

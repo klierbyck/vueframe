@@ -8,14 +8,14 @@ export const appRouter = [{
         path: '*', //*号表示匹配任意内容
         title: '404',
         component: resolve => {
-            require(['@/views/error/error.vue'], resolve);
+            require(['@/views/error/Error.vue'], resolve);
         }
     },
     {
         path: '/',
         name: 'Test',
         component: resolve => {
-            require(['@/views/test/test.vue'], resolve);
+            require(['@/views/test/Test.vue'], resolve);
         }
     },
     // {
@@ -44,4 +44,4 @@ let route = new Router({
     }
 }); */
 
-export default route;
+export default route

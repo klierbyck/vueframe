@@ -1,8 +1,6 @@
 <template>
     <div>
-        <div>
-            测试{{flag}}
-        </div>
+        <div>测试{{flag}}</div>
     </div>
 </template>
 <script>
@@ -16,7 +14,7 @@
         },
         mounted () {
             console.log('util', util.randomStr(32));
-            console.log('date', dateFtt.dateFtt('yyyy-MM-dd',new Date()));
+            console.log('date', dateFtt.dateFtt('yyyy-MM-dd', new Date()));
             this.$http.post('http://jsonplaceholder.typicode.com/posts', { a: 1, b: 2 }, 'q123').then((result) => {
                 console.log('result', result);
             }).catch((err) => {
@@ -33,7 +31,7 @@
                 console.log('err1', err);
             });
             setTimeout(() => {
-                this.$http.cancel('ALL')
+                this.$http.cancel('ALL');
             }, 1000);
         }
     };

@@ -36,6 +36,7 @@
             }
         },
         created () {
+
         },
         mounted () {
             this.init();
@@ -46,13 +47,13 @@
                 this.chart.clear();
                 this.chart.setOption(this.option, true);
                 this.chart.on('legendselectchanged', function (param) {
-                    console.log(param);
+                    console.log(param)
                 });
                 window.addEventListener("resize", this.chart.resize);
             },
             //legend事件
             selectLegend () {
-                console.log('ddd', echarts);
+                console.log('ddd', echarts)
             }
         },
         computed: {
