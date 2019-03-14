@@ -1,22 +1,32 @@
 {
     "presets": [
-        [
-            "env",
-            {
-                "modules": false,
-                "targets": {
-                    "browsers": [
-                        "> 1%",
-                        "last 2 versions",
-                        "not ie <= 8"
-                    ]
-                }
-            }
-        ],
-        "stage-2"
+        ["env", {
+            "loose": false,
+            "modules": "commonjs",
+            "spec": true,
+            "targets": {
+                "browsers": [
+                    "last 3 Chrome versions",
+                    "last 3 Firefox versions",
+                    "Safari >= 10",
+                    "Explorer >= 11",
+                    "Edge >= 12",
+                    "iOS >= 10",
+                    "Android >= 6"
+                ]
+            },
+            "useBuiltIns": "usage",
+            "debug": false
+        }],
+        "stage-3"
     ],
     "plugins": [
-        "transform-vue-jsx",
-        "transform-runtime"
-    ]
+        "dynamic-import-node",
+        "transform-class-properties",
+        "transform-es5-property-mutators",
+        "transform-object-rest-spread",
+        "transform-runtime",
+        "transform-vue-jsx"
+    ],
+    "comments": false
 }
