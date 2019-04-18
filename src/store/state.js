@@ -1,5 +1,5 @@
 const state = {
-    flag: true
+    flag: false
 }
 
 export default state

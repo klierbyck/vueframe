@@ -12,7 +12,7 @@ module.exports = {
         // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
         'plugin:vue/essential',
         // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-        '@vue/standard'
+        // '@vue/standard'
         //   'standard'
     ],
     // required to lint *.vue files
@@ -38,6 +38,6 @@ module.exports = {
         "space-after-keywords": [0, "always"], //关键字后面是否要空一格
         'generator-star-spacing': 0, // 生成器函数*的前后空格
         "eol-last": 0, //文件以单一的换行符结束
-        "no-multiple-empty-lines": [0, {"max": 100}],
+        "no-multiple-empty-lines": [0, { "max": 100 }],
     }
 }

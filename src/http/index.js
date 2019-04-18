@@ -1,36 +1,36 @@
 'use strict';
 
-import axios from 'axios'
-import qs from 'qs'
-// import router from '../router'
+import axios from 'axios';
+import qs from 'qs';
+import router from '../router';
 axios.interceptors.request.use(
     config => {
         //鉴权配置
-        // if (token) {
-        //     config.headers.Authorization = 'Bearer ' + token
-        // }
-        return config
+        console.log(777, localStorage.getItem('token'))
+        if (localStorage.getItem('token')) {
+            config.headers.Authorization = 'Bearer ' + localStorage.getItem('token')
+        }
+        return config;
     },
     error => {
-        return Promise.reject(error)
+        return Promise.reject(error);
     }
 );
 
 axios.interceptors.response.use(
     response => {
-        return response.data
+        return response.data;
     },
     error => {
         //鉴权拦截配置
-        // let errorData = error.response;
-        // if (errorData.status === 401) {
-        //     // 若是接口访问的时候没有发现有鉴权的基础信息,直接返回登录页,或者授权不可用
-        //     auth.logout();
-        //     router.push({
-        //         path: '/login'
-        //     });
-        // }
-        return Promise.resolve(error.response)
+        let errorData = error.response;
+        if (errorData.status === 401) {
+            // 若是接口访问的时候没有发现有鉴权的基础信息,直接返回登录页,或者授权不可用
+            router.push({
+                path: '/login'
+            });
+        }
+        return Promise.resolve(error.response);
     }
 );
 
@@ -67,25 +67,25 @@ function getAxios(method, url, params, baseURL, cancelStr) {
         property.params = params;
     }
     console.log('cancelCallback', cancelCallback);
-    return axios(property)
+    return axios(property);
 }
 
 //导出请求方法,调用时若需要取消请求则需要传入唯一值得cancelStr，cancelStr为ALL时
 export default {
     get(url, params, cancelStr) {
-        return getAxios('GET', url, params, process.env.API_ROOT, cancelStr)
+        return getAxios('GET', url, params, process.env.API_ROOT, cancelStr);
     },
     post(url, params, cancelStr) {
-        return getAxios('POST', url, params, process.env.API_ROOT, cancelStr)
+        return getAxios('POST', url, params, process.env.API_ROOT, cancelStr);
     },
     put(url, params, cancelStr) {
-        return getAxios('PUT', url, params, process.env.API_ROOT, cancelStr)
+        return getAxios('PUT', url, params, process.env.API_ROOT, cancelStr);
     },
     patch(url, params, cancelStr) {
-        return getAxios('PATCH', url, params, process.env.API_ROOT, cancelStr)
+        return getAxios('PATCH', url, params, process.env.API_ROOT, cancelStr);
     },
     delete(url, params, cancelStr) {
-        return getAxios('DELETE', url, params, process.env.API_ROOT, cancelStr)
+        return getAxios('DELETE', url, params, process.env.API_ROOT, cancelStr);
     },
     cancel(str) {
         if (str === 'ALL') {

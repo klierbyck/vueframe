@@ -1,5 +1,7 @@
 <template>
-    <div>未找到资源</div>
+    <div>
+        未找到资源
+    </div>
 </template>
 <script>
     export default {
@@ -11,8 +13,8 @@
         mounted () {
 
         }
-    }
+    };
 </script>
 <style lang="less">
-    @import url("./error.less");
+    @import url('./error.less');
 </style>

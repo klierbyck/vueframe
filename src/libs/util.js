@@ -6,7 +6,7 @@
  * @return {Array}
  */
 const GradientColor = function (startColor, endColor, step) {
-    let startRGB = this.colorRgb(startColor); //转换为rgb数组模式
+    let startRGB = this.colorRgb(startColor);//转换为rgb数组模式
     let startR = startRGB[0];
     let startG = startRGB[1];
     let startB = startRGB[2];
@@ -16,7 +16,7 @@ const GradientColor = function (startColor, endColor, step) {
     let endG = endRGB[1];
     let endB = endRGB[2];
 
-    let sR = (endR - startR) / step; //总差值
+    let sR = (endR - startR) / step;//总差值
     let sG = (endG - startG) / step;
     let sB = (endB - startB) / step;
 
@@ -27,7 +27,7 @@ const GradientColor = function (startColor, endColor, step) {
         let hex = this.colorHex('rgb(' + parseInt((sR * i + startR)) + ',' + parseInt((sG * i + startG)) + ',' + parseInt((sB * i + startB)) + ')');
         colorArr.push(hex);
     }
-    return colorArr
+    return colorArr;
 };
 // 将hex表示方式转换为rgb表示方式(这里返回rgb数组模式)
 GradientColor.prototype.colorRgb = function (hex) {
@@ -46,9 +46,9 @@ GradientColor.prototype.colorRgb = function (hex) {
         for (let i = 1; i < 7; i += 2) {
             sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
         }
-        return sColorChange
+        return sColorChange;
     } else {
-        return sColor
+        return sColor;
     }
 };
 // 将rgb表示方式转换为hex表示方式
@@ -61,7 +61,7 @@ GradientColor.prototype.colorHex = function (rgb) {
         let strHex = "#";
         for (let i = 0; i < aColor.length; i++) {
             let hex = Number(aColor[i]).toString(16);
-            hex = hex < 10 ? 0 + '' + hex : hex; // 保证每个rgb的值为2位
+            hex = hex < 10 ? 0 + '' + hex : hex;// 保证每个rgb的值为2位
             if (hex === "0") {
                 hex += hex;
             }
@@ -74,16 +74,16 @@ GradientColor.prototype.colorHex = function (rgb) {
     } else if (reg.test(_this)) {
         let aNum = _this.replace(/#/, "").split("");
         if (aNum.length === 6) {
-            return _this
+            return _this;
         } else if (aNum.length === 3) {
             let numHex = "#";
             for (let i = 0; i < aNum.length; i += 1) {
                 numHex += (aNum[i] + aNum[i]);
             }
-            return numHex
+            return numHex;
         }
     } else {
-        return _this
+        return _this;
     }
 }
 export default {
@@ -102,7 +102,7 @@ export default {
      * @return {String}
      */
     trim: function (str) {
-        return str.replace(/^\s+|\s+$/g, '')
+        return str.replace(/^\s+|\s+$/g, '');
     },
     /**
      * 生成随机字符串
@@ -110,12 +110,12 @@ export default {
      * @return {String}
      */
     randomStr: function (len = 16) {
-        let text = "";
+        let text = "", l;
         let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         for (let i = 0; i < len; i++) {
             text += str.charAt(Math.floor(Math.random() * str.length));
         }
-        return text
+        return text;
     },
     GradientColor
 }

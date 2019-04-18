@@ -7,9 +7,9 @@ import * as actions from './actions'
 import * as getters from './getters'
 import test from './modules/test'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
-const debug = process.env.NODE_ENV !== 'production';
+const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
     state,

@@ -1,7 +1,7 @@
 import * as types from './mutation-types'
 
 const mutations = {
-    [types.TEST](state, val) {
+    [types.SHOW_SHADOW](state, val) {
         state.flag = val;
     }
 }

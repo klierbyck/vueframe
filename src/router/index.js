@@ -1,6 +1,5 @@
 import Vue from 'vue';
-import Router from 'vue-router';
-// import Func from '@/views/func/Func.vue';
+import Router from 'vue-router'
 
 Vue.use(Router);
 
@@ -8,27 +7,20 @@ export const appRouter = [{
         path: '*', //*号表示匹配任意内容
         title: '404',
         component: resolve => {
-            require(['@/views/error/Error.vue'], resolve);
+            require(['@/views/error/error.vue'], resolve);
         }
     },
     {
         path: '/',
-        name: 'Test',
-        component: resolve => {
-            require(['@/views/test/Test.vue'], resolve);
-        }
+        redirect: '/home',
     },
-    // {
-    //     path: '/qa',
-    //     component: Func,
-    //     children: [{
-    //         path: '',
-    //         name: 'qa',
-    //         component: resolve => {
-    //             require(['@/views/qa/Qa.vue'], resolve);
-    //         }
-    //     }]
-    // }
+    {
+        path: '/home',
+        name: 'home',
+        component: resolve => {
+            require(['@/views/home/home.vue'], resolve);
+        }
+    }
 ]
 
 let route = new Router({
@@ -44,4 +36,4 @@ let route = new Router({
     }
 }); */
 
-export default route
+export default route;

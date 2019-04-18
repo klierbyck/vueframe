@@ -6,6 +6,15 @@
 
 <script>
     export default {
-        name: 'App'
+        name: 'App',
+        components: {
+            
+        },
+        computed: {
+            
+        },
     }
 </script>
+<style lang="less" scoped>
+    
+</style>

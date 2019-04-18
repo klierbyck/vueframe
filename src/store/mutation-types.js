@@ -1,1 +1,1 @@
-export const TEST = 'TEST'
+export const SHOW_SHADOW = 'SHOW_SHADOW'
